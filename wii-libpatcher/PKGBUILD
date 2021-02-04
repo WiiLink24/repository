@@ -2,15 +2,15 @@
 
 actualname=libpatcher
 pkgname=wii-$actualname
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Library for common IOS patches'
 url='https://github.com/WiiLink24/libpatcher'
 arch=(any)
 license=(MIT)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha256sums=('3365eb8db1de6baa9c1891a0a4f2198ecccf7760cd189615c49ac3249458abd5')
-b2sums=('c6e81a3c4d3b524613a146d51c4fd0353faafdf1ff03eead072df7851b5c5d86b821d6454235560b5de7141af38f9bdd338b699f1ef74f2345d430027f969afb')
+sha256sums=('f758893a9ac32ba1ad9f7e983767d82655a8365d676b8a5eb0447785a87fe993')
+b2sums=('ab6d14abd8ef5ca0f5fbb1b3b2a95fd25bcbcff8c2b09caffafc2c79f957cd897f13f412383bfc55c17c29c27705d02c8985e45ba862d6dfe0ae6e73925c6cda')
 
 build() {
   source ${DEVKITPRO}/wiivars.sh
