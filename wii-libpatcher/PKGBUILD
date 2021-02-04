@@ -1,0 +1,31 @@
+# Maintainer:  Spotlight <spotlight@joscomputing.space>
+
+actualname=libpatcher
+pkgname=wii-$actualname
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='Library for common IOS patches'
+url='https://github.com/WiiLink24/libpatcher'
+arch=(any)
+license=(MIT)
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha256sums=('9fae9e24253df3e0506b43962237cbae9407a739c43f1cbdfcd6ce1307570e94')
+b2sums=('f086096556a0a02dfc8e3de96863ead320222c37a840be344cc04d6c1f0dcb722a3c5b07df9f56efaf95c70199f57a9ea80334124497e109a19ca0375a315eb5')
+
+build() {
+  source ${DEVKITPRO}/wiivars.sh
+
+  # Fixes a regression in which $(TARGET) is sourced too heavily.
+  # As we rename, we must ensure the previous source has been deleted before
+  # continuing with the build.
+  rm -rf $actualname
+  mv $actualname-$pkgver $actualname
+  cd $actualname
+  make
+}
+
+package() {
+  source ${DEVKITPRO}/wiivars.sh
+
+  make -C $actualname DESTDIR="$pkgdir/${PORTLIBS_PREFIX}" install
+}
